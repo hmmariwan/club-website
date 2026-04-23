@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Club</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">Club 1999</div>
+
+        <div class="menu-toggle" id="menu-toggle">
+            ☰
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="/">Home</a></li>
+
+            <li class="dropdown">
+                <a href="#">Activities ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Reading Club</a></li>
+                    <li><a href="#">Artwork</a></li>
+                    <li><a href="#">Stories & Poetry</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#">Events</a></li>
+            <li><a href="/join">Join</a></li>
+
+            {% if session.get("user") %}
+                <li>Welcome, {{ session["user"] }}</li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/logout">Logout</a></li>
+            {% else %}
+                <li><a href="/login">Login</a></li>
+            {% endif %}
+
+
+        </ul>
+    </nav>
+</header>
+
+
+
+{% block content %}
+{% endblock %}
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

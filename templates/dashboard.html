@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Welcome, {{ session["user"] }}!</h2>
+
+<p>You are now logged in.</p>
+
+<br>
+
+<a href="/badge">
+    <button>Download Membership Badge</button>
+</a>
+
+{% endblock %}
