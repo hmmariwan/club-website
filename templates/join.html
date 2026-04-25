@@ -4,8 +4,8 @@
 
 <h2>Join the Club</h2>
 
-<form method="POST">
-
+<form method="POST" enctype="multipart/form-data">
+    
     <label>Full Name:</label><br>
     <input type="text" name="name" required><br><br>
 
@@ -20,6 +20,9 @@
 
     <label>Interests:</label><br>
     <textarea name="interests"></textarea><br><br>
+
+    <label>Upload Photo:</label><br>
+    <input type="file" name="photo" accept="image/*"><br><br>
 
     <button type="submit">Register</button>
 

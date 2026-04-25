@@ -1,6 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Welcome to Our Community Club</h1>
-<p>Established in 1999</p>
+
+<div class="home-container">
+    <h1>Welcome to Our Community Club</h1>
+
+    <p class="home-intro">
+        Established in 1999, our club brings people together through reading,
+        art, storytelling, and shared experiences. We provide a friendly and
+        supportive space where members can connect, learn, and enjoy meaningful
+        activities—both in person and online.
+    </p>
+</div>
+
+<div class="slider">
+    <img src="{{ url_for('static', filename='images/Club Building.png') }}" class="slide active">
+    <img src="{{ url_for('static', filename='images/Westminster Bridge.png') }}" class="slide">
+    <img src="{{ url_for('static', filename='images/Green Park.png') }}" class="slide">
+</div>
+
 {% endblock %}

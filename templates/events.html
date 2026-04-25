@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Upcoming Events</h2>
+
+<div class="accordion">
+
+    <!-- Marathon -->
+    <div class="accordion-item">
+        <button class="accordion-header">+ 4 Miles Marathon</button>
+        <div class="accordion-content">
+            <p><strong>Date:</strong> 15 June 2026</p>
+            <p><strong>Time:</strong> 9:00 AM</p>
+            <p><strong>Location:</strong> Community Park</p>
+            <p>A friendly 4-mile walk/run suitable for all fitness levels.</p>
+        </div>
+    </div>
+
+    <!-- Live Music -->
+    <div class="accordion-item">
+        <button class="accordion-header">+ Live Music Evening</button>
+        <div class="accordion-content">
+            <p><strong>Date:</strong> 22 June 2026</p>
+            <p><strong>Time:</strong> 6:00 PM</p>
+            <p><strong>Location:</strong> Club Hall</p>
+            <p>Enjoy relaxing live music performances with fellow members.</p>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
