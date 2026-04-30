@@ -44,7 +44,8 @@ def init_db():
                 phone TEXT,
                 interests TEXT,
                 password TEXT,
-                photo TEXT
+                photo TEXT,
+                member_id TEXT
             )
         """)
     else:
@@ -56,7 +57,8 @@ def init_db():
                 phone TEXT,
                 interests TEXT,
                 password TEXT,
-                photo TEXT
+                photo TEXT,
+                member_id TEXT
             )
         """)
 
