@@ -153,7 +153,8 @@ def dashboard():
 def logout():
     session.pop("user", None)
     return redirect("/")
-
+    
+@app.route("/badge")
 def badge():
     if "user" not in session:
         return redirect("/login")
