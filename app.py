@@ -168,7 +168,10 @@ def badge():
 
     try:
         # Correct query (SQLite version)
-        cursor.execute("SELECT * FROM members WHERE name = ?", (name,))
+        cursor.execute(
+            "SELECT * FROM members WHERE name = %s",
+            (name,)
+        )
         user = cursor.fetchone()
 
         if not user:
@@ -184,8 +187,8 @@ def badge():
             member_id = f"{initials}-{random_number}"
 
             cursor.execute(
-                "UPDATE members SET member_id = ? WHERE name = ?",
-                (member_id, name)
+            "UPDATE members SET member_id = %s WHERE name = %s",
+            (member_id, name)
             )
             conn.commit()
 
