@@ -4,6 +4,10 @@
 
 <h2>Join the Club</h2>
 
+{% if error %}
+<p style="color:red;">{{ error }}</p>
+{% endif %}
+
 <form method="POST" enctype="multipart/form-data">
     
     <label>Full Name:</label><br>

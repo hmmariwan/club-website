@@ -1,43 +1,72 @@
 from flask import Flask, render_template, request, redirect, session, send_file
-import sqlite3, io, os, random, qrcode
+import io, os, random, qrcode
 from werkzeug.security import generate_password_hash, check_password_hash
-import secrets
-#print(secrets.token_hex(16))
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Table
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.pagesizes import landscape
 from reportlab.lib import colors
 from reportlab.lib.units import mm
 from reportlab.lib.enums import TA_CENTER
-from reportlab.pdfgen import canvas
 from werkzeug.utils import secure_filename
 
+import secrets
+print(secrets.token_hex(32))
+
 app = Flask(__name__)
-app.secret_key = "385587ae2ea5563e8bfc5d51adc0e0d2" 
+app.secret_key = os.environ.get("SECRET_KEY") or secrets.token_hex(32)
 
-conn = sqlite3.connect("members.db")
-cursor = conn.cursor()
+# Detect environment
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
-conn.commit()
-conn.close()
+# --- Database Connection ---
+def get_db_connection():
+    if DATABASE_URL:
+        import psycopg2
+        return psycopg2.connect(DATABASE_URL)
+    else:
+        import sqlite3
+        return sqlite3.connect("members.db")
 
+# --- Placeholder helper ---
+def placeholder():
+    return "%s" if DATABASE_URL else "?"
+
+# --- Init DB ---
 def init_db():
-    conn = sqlite3.connect("members.db")
+    conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS members (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT,
-            email TEXT UNIQUE,
-            phone TEXT,
-            interests TEXT,
-            password TEXT
-        )
-    """)
+
+    if DATABASE_URL:
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS members (
+                id SERIAL PRIMARY KEY,
+                name TEXT,
+                email TEXT UNIQUE,
+                phone TEXT,
+                interests TEXT,
+                password TEXT,
+                photo TEXT
+            )
+        """)
+    else:
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS members (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT,
+                email TEXT UNIQUE,
+                phone TEXT,
+                interests TEXT,
+                password TEXT,
+                photo TEXT
+            )
+        """)
+
     conn.commit()
+    cursor.close()
     conn.close()
 
 init_db()
+
+# --- Routes ---
 
 @app.route("/")
 def home():
@@ -55,33 +84,35 @@ def join():
         hashed_password = generate_password_hash(password)
 
         photo = request.files["photo"]
-
         filename = None
+
         if photo and photo.filename != "":
             filename = secure_filename(photo.filename)
             photo.save(os.path.join("static/images", filename))
 
-        conn = sqlite3.connect("members.db")
+        conn = get_db_connection()
         cursor = conn.cursor()
-        cursor.execute(
-            "INSERT INTO members (name, email, phone, interests, password, photo) VALUES (?, ?, ?, ?, ?, ?)",
-            (name, email, phone, interests, hashed_password, filename)
-        )
+
+        query = f"""
+            INSERT INTO members (name, email, phone, interests, password, photo)
+            VALUES ({placeholder()}, {placeholder()}, {placeholder()}, {placeholder()}, {placeholder()}, {placeholder()})
+        """
+        try:
+            cursor.execute(query, (name, email, phone, interests, hashed_password, filename))
+            conn.commit()
+        except Exception as e:
+            conn.rollback()
+            cursor.close()
+            conn.close()
+            return render_template("join.html", error="Email already exists")
+
         conn.commit()
+        cursor.close()
         conn.close()
 
         return redirect(f"/success?name={name}")
 
     return render_template("join.html")
-
-@app.route("/events")
-def events():
-    return render_template("events.html")
-
-@app.route("/success")
-def success():
-    name = request.args.get("name")
-    return render_template("success.html", name=name)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -89,10 +120,14 @@ def login():
         email = request.form["email"]
         password = request.form["password"]
 
-        conn = sqlite3.connect("members.db")
+        conn = get_db_connection()
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM members WHERE email = ?", (email,))
+
+        query = f"SELECT * FROM members WHERE email = {placeholder()}"
+        cursor.execute(query, (email,))
         user = cursor.fetchone()
+
+        cursor.close()
         conn.close()
 
         if user and check_password_hash(user[5], password):
@@ -102,6 +137,11 @@ def login():
             return "Invalid email or password"
 
     return render_template("login.html")
+
+@app.route("/success")
+def success():
+    name = request.args.get("name")
+    return render_template("success.html", name=name)
 
 @app.route("/dashboard")
 def dashboard():
@@ -121,22 +161,23 @@ def badge():
 
     name = session["user"]
 
-    # --- Get user ---
-    conn = sqlite3.connect("members.db")
+    conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM members WHERE name = ?", (name,))
+
+    query = f"SELECT * FROM members WHERE name = {placeholder()}"
+    cursor.execute(query, (name,))
     user = cursor.fetchone()
+
+    cursor.close()
     conn.close()
 
     if not user:
         return "User not found"
 
-    # ✅ Create initials + 6-digit ID
     initials = "".join([part[0].upper() for part in name.split()])
     random_number = random.randint(100000, 999999)
     member_id = f"{initials}-{random_number}"
 
-    # --- PDF setup ---
     buffer = io.BytesIO()
     width = 85.6 * mm
     height = 54 * mm
@@ -147,7 +188,6 @@ def badge():
 
     styles = getSampleStyleSheet()
 
-    # Custom styles
     title_style = ParagraphStyle(
         name="title",
         parent=styles["Normal"],
@@ -163,11 +203,9 @@ def badge():
         fontSize=8
     )
 
-    # --- Logo ---
     logo_path = os.path.join("static", "images", "logo.png")
     logo = Image(logo_path, width=25, height=25) if os.path.exists(logo_path) else Spacer(1,1)
 
-    # --- Photo ---
     photo_filename = user[6]
     if photo_filename:
         photo_path = os.path.join("static/images", photo_filename)
@@ -175,7 +213,6 @@ def badge():
     else:
         photo = Spacer(1,1)
 
-    # --- QR ---
     qr_data = f"{name} | ID: {member_id}"
     qr_img = qrcode.make(qr_data)
 
@@ -186,7 +223,6 @@ def badge():
 
     empty = Spacer(1,1)
 
-    # --- Layout ---
     card = Table([
         [logo, Paragraph("<b>Community Club</b>", title_style), qr],
         [empty, Paragraph("Est. 1999", text_style), empty],
@@ -194,48 +230,33 @@ def badge():
         [empty, Paragraph(f"<b>{member_id}</b>", text_style), empty],
     ], colWidths=[50, 100, 50])
 
-    # 🎨 COLORFUL STYLE
     card.setStyle([
-        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#2c3e50")),   # dark top
-        ("BACKGROUND", (0, 1), (-1, -1), colors.HexColor("#ecf0f1")),  # light body
+        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#2c3e50")),
+        ("BACKGROUND", (0, 1), (-1, -1), colors.HexColor("#ecf0f1")),
         ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
-
         ("ALIGN", (0, 0), (-1, -1), "CENTER"),
         ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-
         ("BOX", (0, 0), (-1, -1), 1, colors.black),
         ("LINEBELOW", (0, 0), (-1, 0), 2, colors.HexColor("#1abc9c")),
-
-        ("LEFTPADDING", (0, 0), (-1, -1), 5),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 5),
-        ("TOPPADDING", (0, 0), (-1, -1), 3),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
     ])
 
     doc.build([card])
-
     buffer.seek(0)
 
-    return send_file(
-        buffer,
-        as_attachment=True,
-        download_name=f"{name}_badge.pdf",
-        mimetype="application/pdf"
-    )
+    return send_file(buffer, as_attachment=True,
+                     download_name=f"{name}_badge.pdf",
+                     mimetype="application/pdf")
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
     if request.method == "POST":
-        name = request.form["name"]
-        email = request.form["email"]
-        message = request.form["message"]
-
-        # For now, just print (later we can email or store it)
-        print(name, email, message)
-
+        print(request.form)
         return render_template("contact.html", success=True)
-
     return render_template("contact.html")
+
+@app.route("/events")
+def events():
+    return render_template("events.html")
 
 @app.route("/activities/reading")
 def reading():
