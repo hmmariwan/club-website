@@ -34,12 +34,15 @@
             <li><a href="/events">Events</a></li>
             <li><a href="/join">Join</a></li>
 
-            {% if session.get("user") %}
+            {% if session.get("user_id") %}
+
             <li><a href="/dashboard">Dashboard</a></li>
             <li><a href="/logout">Logout</a></li>
+
             {% else %}
             <li><a href="/login">Login</a></li>
             {% endif %}
+
             <li><a href="/contact">Contact</a></li>
 
         </ul>
