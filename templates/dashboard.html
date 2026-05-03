@@ -3,7 +3,7 @@
 {% block content %}
 
 <h2 class="welcome-text">
-    Welcome, {{ session['user_name'] }} 👋
+    Welcome, {{user.name}}👋
 </h2>
 
 <p>You are now logged in.</p>
@@ -15,3 +15,4 @@
 </a>
 
 {% endblock %}
+
