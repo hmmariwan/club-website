@@ -1,7 +1,13 @@
 Flask
+flask-login
 Werkzeug
 reportlab
 gunicorn
 qrcode
 Pillow
 psycopg2-binary
+python-dotenv
+
+
+
+
