@@ -1,13 +1,47 @@
 {% extends "base.html" %}
+
 {% block content %}
 
-<h2>Stories & Poetry</h2>
-<p>Members share personal stories and poetry.</p>
+<h2>Upcoming Events</h2>
 
-<ul>
-    <li>📖 Storytelling sessions</li>
-    <li>✍️ Poetry readings</li>
-    <li>🎤 Open mic events</li>
-</ul>
+<div class="accordion">
+
+    <!-- Marathon -->
+    <div class="accordion-item">
+        <button class="accordion-header">+ Sudan: A Future Reclaimed</button>
+        <div class="story-content">
+            <p>
+                When Florina arrived in a village near Khartoum, she met Amal, a twelve-year-old
+                who had never attended school. Through Lend a Hand, a safe learning centre
+                was created, offering education, meals, and clean water.
+            </p>
+            <p>
+                Within a year, Amal learned to read and write and now dreams of becoming a
+                teacher. Her story reflects how access to education can transform not only
+                a child’s future, but an entire community.
+            </p>
+        </div>
+    </div>
+
+    <!-- Live Music -->
+    <div class="accordion-item">
+        <button class="accordion-header">+ Syria: Hope Beyond Conflict</button>
+        <div class="story-content">
+            <p>
+                In a conflict-affected town in Syria, thirteen-year-old Yusuf had lost access
+                to education and stability. Lend a Hand helped establish a support centre
+                providing learning, counselling, and a safe routine.
+            </p>
+            <p>
+                With time, Yusuf regained confidence, rediscovered his passion for learning,
+                and now hopes to become an engineer. His progress has brought renewed hope
+                to his family and others around him.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/stories.js') }}"></script>
 
 {% endblock %}

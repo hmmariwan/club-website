@@ -412,21 +412,25 @@ def badge():
 def contact():
     return render_template("contact.html")
 
-@app.route("/events")
-def events():
-    return render_template("events.html")
+@app.route("/whatwedo/child")
+def child():
+    return render_template("child.html")
 
-@app.route("/activities/reading")
-def reading():
-    return render_template("reading.html")
+@app.route("/whatwedo/community")
+def community():
+    return render_template("community.html")
 
-@app.route("/activities/art")
-def art():
-    return render_template("art.html")
+@app.route("/whatwedo/education")
+def education():
+    return render_template("education.html")
 
-@app.route("/activities/stories")
+@app.route("/stories")
 def stories():
     return render_template("stories.html")
+
+@app.route("/donate")
+def donate():
+    return render_template("donate.html")
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":

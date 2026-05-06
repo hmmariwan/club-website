@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="donate-container">
+
+    <h2>Support Our Mission</h2>
+    <p>Your donation helps children access education, safety, and a better future.</p>
+
+    <!-- SUCCESS MESSAGE -->
+    <div id="success-message" class="success-message" style="display: none;">
+        🎉 Thank you! Your donation was successful.
+    </div>
+
+    <!-- DONATION FORM -->
+    <form id="donation-form">
+
+        <!-- Amount Selection -->
+        <label>Select Amount (£)</label>
+        <div class="amount-options">
+            <button type="button" onclick="selectAmount(5, event)">£5</button>
+            <button type="button" onclick="selectAmount(10, event)">£10</button>
+            <button type="button" onclick="selectAmount(20, event)">£20</button>
+            <button type="button" onclick="selectAmount(50, event)">£50</button>
+        </div>
+
+        <input type="number" id="custom-amount" placeholder="Or enter custom amount (£)" min="1">
+
+        <!-- Personal Info -->
+        <label>Name</label>
+        <input type="text" required>
+
+        <label>Email</label>
+        <input type="email" required>
+
+        <!-- Fake Payment Section -->
+        <h3>Payment Details</h3>
+
+        <label>Card Number</label>
+        <input type="text" placeholder="1234 5678 9012 3456" required>
+
+        <label>Expiry Date</label>
+        <input type="text" placeholder="MM/YY" required>
+
+        <label>CVV</label>
+        <input type="text" placeholder="123" required>
+
+        <button type="submit" class="donate-btn">Donate Now</button>
+
+    </form>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/donate.js') }}"></script>
+
+{% endblock %}

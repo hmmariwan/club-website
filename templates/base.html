@@ -12,7 +12,7 @@
     <nav class="navbar">
         <div class="logo">
             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Club Logo">
-            <span>Club 1999</span>
+            <span class="brand-text">Lend a Hand</span>
         </div>
 
         <div class="menu-toggle" id="menu-toggle">
@@ -25,13 +25,13 @@
             <li class="dropdown">
                 <a href="#" class="dropbtn">What We Do ▾</a>
                 <ul class="dropdown-menu">
-                    <li><a href="/activities/reading">Reading Club</a></li>
-                    <li><a href="/activities/art">Artwork</a></li>
-                    <li><a href="/activities/stories">Stories & Poetry</a></li>
+                    <li><a href="/whatwedo/education">Education Support</a></li>
+                    <li><a href="/whatwedo/community">Community Aid</a></li>
+                    <li><a href="/whatwedo/child">Child Protection</a></li>
                 </ul>
             </li>
 
-            <li><a href="/events">Stories</a></li>
+            <li><a href="/stories">Stories</a></li>
             <li class="dropdown">
                 <a href="#" class="dropbtn">Get Involved ▾</a>
                 <ul class="dropdown-menu">
@@ -45,8 +45,7 @@
                 <a href="/logout">Logout</a>
             {% endif %}
 
-            
-            
+            <li><a href="/donate">Donate</a></li>
             <li><a href="/contact">Contact</a></li>
 
         </ul>
@@ -56,6 +55,6 @@
 {% block content %}
 {% endblock %}
 
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script src="{{ url_for('static', filename='js/nav.js') }}"></script>
 </body>
 </html>

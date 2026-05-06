@@ -2,21 +2,38 @@
 
 {% block content %}
 
-<div class="home-container">
-    <h1>Welcome to Our Community Club</h1>
+<section class="hero-section">
 
-    <p class="home-intro">
-        Established in 1999, our club brings people together through reading,
-        art, storytelling, and shared experiences. We provide a friendly and
-        supportive space where members can connect, learn, and enjoy meaningful
-        activities—both in person and online.
+    <h1>Lend a Hand</h1>
+
+    <h2>From awareness to action. From sympathy to change.</h2>
+
+    <p>
+        Lend a Hand was born from a simple but powerful realisation — that true change
+        does not come from treating symptoms, but from addressing the root causes of poverty,
+        inequality, and vulnerability.
     </p>
-</div>
 
+    <p>
+        After witnessing hardship across the world, Florina Romani turned reflection into action.
+        What began as a personal journey has become a mission to transform lives through
+        education, protection, and opportunity.
+    </p>
+
+    <p>
+        We don’t just offer support — we build pathways out of poverty. Safe spaces for children.
+        Education that unlocks potential. Community programmes that restore dignity and hope.
+    </p>
+
+    <a href="/donate" class="cta-button">Donate Now</a>
+
+</section>
 <div class="slider">
     <img src="{{ url_for('static', filename='images/home-image1.png') }}" class="slide active">
     <img src="{{ url_for('static', filename='images/home-image2.png') }}" class="slide">
     <img src="{{ url_for('static', filename='images/home-image3.png') }}" class="slide">
 </div>
+
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
 
 {% endblock %}

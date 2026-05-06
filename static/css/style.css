@@ -1,14 +1,25 @@
-/* GENERAL */
 body {
     font-family: Arial, sans-serif;
     font-size: 18px;
     margin: 0;
 }
 
+.brand-text {
+    animation: colorChange 4s infinite;
+    font-weight: bold;
+}
+
+@keyframes colorChange {
+    0% { color: orange; }
+    33% { color: blue; }
+    66% { color: green; }
+    100% { color: orange; }
+}
+
 /* NAVBAR */
 .navbar {
     background-color: #2c3e50;
-    padding: 10px;
+    padding: 20px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -83,23 +94,47 @@ body {
     display: block;
 }
 
-/* HOME PAGE */
-.home-container {
+.hero-section {
+    max-width: 900px;
+    margin: 80px auto;
     text-align: center;
-    padding: 30px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
 }
 
-.home-container h1 {
-    font-size: 32px;
+.hero-section h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.hero-section h2 {
+    font-size: 20px;
+    font-weight: normal;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.hero-section p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
     margin-bottom: 15px;
 }
 
-.home-intro {
-    max-width: 700px;
-    margin: 0 auto;
-    font-size: 18px;
-    line-height: 1.6;
-    color: #555;
+.cta-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #ff8800;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.cta-button:hover {
+    background-color: #e67600;
 }
 
 /* HAMBURGER MENU */
@@ -172,11 +207,173 @@ button:hover {
     cursor: pointer;
 }
 
-.accordion-content {
+.story-content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 10px 0;
     display: none;
+}
+
+.story-content p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.story-content p:last-child {
+    margin-bottom: 0;
+}
+
+.education-page {
+    max-width: 800px;
+    margin: 40px auto;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+}
+
+.education-page h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.education-page p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.community-page {
+    max-width: 800px;
+    margin: 40px auto;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+}
+
+.community-page h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.community-page p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.protection-page {
+    max-width: 800px;
+    margin: 40px auto;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+}
+
+.protection-page h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.protection-page p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.donate-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Amount buttons */
+.donate-container .amount-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.donate-container .amount-options button {
+    flex: 1;
     padding: 10px;
-    background: #ecf0f1;
-    border-left: 3px solid #2c3e50;
+    font-size: 16px;
+    cursor: pointer;
+
+    /* Remove ALL default styles causing the dash */
+    border: none;
+    outline: none;
+    background: #f5f5f5;
+    border-radius: 6px;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    box-shadow: none;
+}
+
+/* Remove weird click/active artifacts */
+.donate-container .amount-options button:focus,
+.donate-container .amount-options button:active {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Remove mobile tap highlight (important for Chrome) */
+.donate-container .amount-options button {
+    background: #d6d6d6;
+    color: #222;
+    border: 1px solid #c8c8c8;
+}
+
+/* Hover effect */
+.donate-container .amount-options button:hover {
+    background: #e0e0e0;
+}
+
+/* Selected state */
+.donate-container .amount-options button.selected {
+    background: #4CAF50;
+    color: white;
+}
+
+/* Input fields */
+.donate-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Donate button */
+.donate-container .donate-btn {
+    width: 100%;
+    padding: 12px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.donate-container .donate-btn:hover {
+    background: #43a047;
+}
+
+/* Success message */
+.donate-container .success-message {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 /* MOBILE RESPONSIVE */
@@ -213,4 +410,6 @@ button:hover {
     .dropdown:hover .dropdown-menu {
         display: block;
     }
+
 }
+
