@@ -1,20 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="protection-page">
+<section class="support-page">
 
-    <h1>Child Protection</h1>
+    <img 
+        src="{{ url_for('static', filename='images/child-image.png') }}"
+        alt="Child protection and safety support"
+        class="support-image">
 
-    <p>
-        We provide safe and nurturing environments where children are protected
-        from harm and given the care they need.
+    <h1 class="support-title">Child Protection</h1>
+
+    <p class="support-text">
+        We work to protect children from harm, abuse, and neglect by providing safe environments and support services.
     </p>
 
-    <p>
-        Our services include emotional support, supervision, and structured
-        activities that promote wellbeing and development.
+    <p class="support-text">
+        Our focus is to ensure every child grows up in a safe and caring community.
     </p>
 
-</div>
+</section>
 
 {% endblock %}

@@ -1,7 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="community-page">
+<section class="support-page">
+
+    <img 
+        src="{{ url_for('static', filename='images/community-image.png') }}" 
+        alt="Community Aid helping families with food and resources"
+        class="support-image"
+    >
 
     <h1>Community Aid</h1>
 
@@ -15,6 +21,6 @@
         can build a better future.
     </p>
 
-</div>
+</section>
 
 {% endblock %}

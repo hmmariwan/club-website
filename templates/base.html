@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Club</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -52,8 +53,24 @@
     </nav>
 </header>
 
-{% block content %}
-{% endblock %}
+<main class="content">
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer class="site-footer">
+    <div class="social-links">
+        
+        <a href="https://facebook.com/YOUR_PAGE" target="_blank" class="social-icon facebook" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="https://instagram.com/YOUR_PAGE" target="_blank" class="social-icon instagram" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+    </div>
+</footer>
 
 <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
 </body>

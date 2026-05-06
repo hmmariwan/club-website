@@ -1,7 +1,19 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-family: Arial, sans-serif;
     font-size: 18px;
     margin: 0;
+}
+
+.content {
+    flex: 1;
 }
 
 .brand-text {
@@ -89,7 +101,6 @@ body {
     color: white;
 }
 
-/* SHOW DROPDOWN ON HOVER (desktop) */
 .dropdown:hover .dropdown-menu {
     display: block;
 }
@@ -173,7 +184,6 @@ button:hover {
     background: #1abc9c;
 }
 
-/* IMAGE SLIDER */
 .slider {
     width: 100%;
     max-width: 600px;
@@ -191,7 +201,6 @@ button:hover {
     display: block;
 }
 
-/* ACCORDION */
 .accordion-item {
     margin: 10px 20px;
 }
@@ -226,61 +235,32 @@ button:hover {
     margin-bottom: 0;
 }
 
-.education-page {
+.support-page {
     max-width: 800px;
-    margin: 40px auto;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 20px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    text-align: center;
 }
 
-.education-page h1 {
-    font-size: 28px;
+.support-image {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.support-title {
+    font-size: 32px;
     margin-bottom: 15px;
+    color: #2c3e50;
 }
 
-.education-page p {
+.support-text {
     font-size: 16px;
     line-height: 1.6;
-    color: #333;
-    margin-bottom: 12px;
-}
-
-.community-page {
-    max-width: 800px;
-    margin: 40px auto;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 20px;
-}
-
-.community-page h1 {
-    font-size: 28px;
+    color: #444;
     margin-bottom: 15px;
-}
-
-.community-page p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #333;
-    margin-bottom: 12px;
-}
-
-.protection-page {
-    max-width: 800px;
-    margin: 40px auto;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 20px;
-}
-
-.protection-page h1 {
-    font-size: 28px;
-    margin-bottom: 15px;
-}
-
-.protection-page p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #333;
-    margin-bottom: 12px;
 }
 
 .donate-container {
@@ -289,7 +269,6 @@ button:hover {
     padding: 20px;
 }
 
-/* Amount buttons */
 .donate-container .amount-options {
     display: flex;
     gap: 10px;
@@ -301,8 +280,6 @@ button:hover {
     padding: 10px;
     font-size: 16px;
     cursor: pointer;
-
-    /* Remove ALL default styles causing the dash */
     border: none;
     outline: none;
     background: #f5f5f5;
@@ -315,32 +292,27 @@ button:hover {
     box-shadow: none;
 }
 
-/* Remove weird click/active artifacts */
 .donate-container .amount-options button:focus,
 .donate-container .amount-options button:active {
     outline: none;
     box-shadow: none;
 }
 
-/* Remove mobile tap highlight (important for Chrome) */
 .donate-container .amount-options button {
     background: #d6d6d6;
     color: #222;
     border: 1px solid #c8c8c8;
 }
 
-/* Hover effect */
 .donate-container .amount-options button:hover {
     background: #e0e0e0;
 }
 
-/* Selected state */
 .donate-container .amount-options button.selected {
     background: #4CAF50;
     color: white;
 }
 
-/* Input fields */
 .donate-container input {
     width: 100%;
     padding: 10px;
@@ -350,7 +322,6 @@ button:hover {
     font-size: 14px;
 }
 
-/* Donate button */
 .donate-container .donate-btn {
     width: 100%;
     padding: 12px;
@@ -374,6 +345,50 @@ button:hover {
     border-radius: 6px;
     margin-bottom: 15px;
     text-align: center;
+}
+
+.site-footer {
+    background: #2c3e50;
+    padding: 25px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icon.facebook {
+    background: #1877f2;
+}
+
+.social-icon.instagram {
+    background: radial-gradient(circle at 30% 107%,
+        #fdf497 0%,
+        #fdf497 5%,
+        #fd5949 45%,
+        #d6249f 60%,
+        #285aeb 90%);
+}
+
+.social-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* MOBILE RESPONSIVE */

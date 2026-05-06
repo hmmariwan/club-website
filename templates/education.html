@@ -1,20 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="education-page">
+<section class="support-page">
 
-    <h1>Education Support</h1>
+    <img 
+        src="{{ url_for('static', filename='images/education-image.png') }}"
+        alt="Children receiving education support"
+        class="support-image">
 
-    <p>
-        We provide access to education for children at risk by creating safe
-        and supportive learning environments.
+    <h1 class="support-title">Education Support</h1>
+
+    <p class="support-text">
+        We help children access quality education by providing school materials, learning resources, and tuition support.
     </p>
 
-    <p>
-        Our programmes include school materials, trained mentors, and structured
-        lessons that help children develop essential skills for their future.
+    <p class="support-text">
+        Our mission is to ensure every child has the opportunity to learn and achieve their full potential.
     </p>
 
-</div>
+</section>
 
 {% endblock %}
