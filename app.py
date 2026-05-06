@@ -407,10 +407,20 @@ def badge():
         download_name=f"{name}_badge.pdf",
         mimetype="application/pdf"
     )
-# ---------------- STATIC ----------------
-@app.route("/contact")
+
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
-    return render_template("contact.html")
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
+
+        # Process the data here
+
+        return redirect(url_for('contact', success=1))
+
+    success = request.args.get('success')
+    return render_template('contact.html', success=success)
 
 @app.route("/whatwedo/child")
 def child():
