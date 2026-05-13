@@ -2,37 +2,243 @@
 
 {% block content %}
 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sudan.css') }}">
+
 <section class="hero-section">
+    <div class="hero-overlay"></div>
 
-    <h1>Lend a Hand</h1>
+    <div class="hero-container">
 
-    <div class="slider">
-        <img src="{{ url_for('static', filename='images/home-image1.jpg') }}" class="slide active">
+        <div class="hero-text">
+
+            <span class="hero-badge">Sudan Emergency Appeal</span>
+
+            <h1>We have been working in Sudan since 2020</h1>
+
+            <p class="hero-description">
+                Providing support to children and families affected by conflict,
+                displacement, poverty, and hunger.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="/donate" class="btn-primary">Donate Now</a>
+                <a href="#about" class="btn-secondary">Learn More</a>
+            </div>
+
+        </div>
+
+        <div class="hero-image">
+            <img src="{{ url_for('static', filename='images/home-image1.jpg') }}"
+                 alt="17-year-old Doha in Sudan">
+        </div>
+
     </div>
+</section>
 
-    <h2>From awareness to action. From sympathy to change.</h2>
+<section class="content-section" id="about">
 
-    <p>
-        Lend a Hand was born from a simple but powerful realisation — that true change
-        does not come from treating symptoms, but from addressing the root causes of poverty,
-        inequality, and vulnerability.
-    </p>
+    <div class="container narrow">
 
-    <p>
-        After witnessing hardship across the world, Florina Romani turned reflection into action.
-        What began as a personal journey has become a mission to transform lives through
-        education, protection, and opportunity.
-    </p>
+        <h2>Sudan Humanitarian Crisis</h2>
 
-    <p>
-        We don’t just offer support — we build pathways out of poverty. Safe spaces for children.
-        Education that unlocks potential. Community programmes that restore dignity and hope.
-    </p>
+        <p>
+            We have been working in Sudan since 2020, providing support to children and families affected by conflict, displacement, poverty, and hunger.
+        </p>
 
-    <a href="/donate" class="cta-button">Donate Now</a>
+        <p>
+            Sudan was facing a humanitarian crisis, where children and families were already experiencing high levels of poverty, malnutrition, disease outbreaks and climate-related shocks.
+        </p>
+
+        <p>
+            The conflict has compounded these existing crises, pushing the country into one of the worst humanitarian emergencies in the world, with parts of Sudan at risk of famine.
+        </p>
+
+        <p>
+            Over 20 million people face acute food insecurity, and over 30 million people - nearly two thirds of Sudan's population - currently need humanitarian assistance.
+        </p>
+
+        <p>
+            Children in Sudan are living through horrors no child should witness.
+        </p>
+
+        <p>
+            Since fighting broke out in April 2023, this has become the world's largest child displacement crisis.
+        </p>
+
+        <p>
+            Millions of children need our help right now.
+        </p>
+
+    </div>
+</section>
+
+<section class="dark-section">
+
+    <div class="container">
+
+        <h2>The crisis children are facing</h2>
+
+        <div class="info-grid">
+
+            <div class="info-card">
+                <h3>Displacement Crisis</h3>
+
+                <p>
+                    Sudan’s children are facing a devastating humanitarian crisis driven by war, hunger and mass displacement.
+                </p>
+
+                <p>
+                    More than 13 million people, including 7 million children, have been forced from their homes in what is now the world’s largest child displacement crisis, leaving families in overcrowded shelters without enough food, clean water or healthcare.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h3>Food Insecurity</h3>
+
+                <p>
+                    Hunger has reached catastrophic levels, with over half the population struggling to survive and 11.6 million children experiencing severe food insecurity.
+                </p>
+
+                <p>
+                    Many young children are acutely malnourished and at risk of death without urgent treatment.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h3>Conflict & Violence</h3>
+
+                <p>
+                    In areas such as El Fasher and Kadugli, famine conditions are worsening, while thousands of children remain trapped under siege, unable to safely escape and exposed to violence, starvation and extreme suffering.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="content-section">
+
+    <div class="container two-column">
+
+        <div class="content-column">
+
+            <h2>What this means for children</h2>
+
+            <p>
+                Children in Sudan are suffering the worst effects of the crisis, facing violence, abuse, displacement and the collapse of essential services.
+            </p>
+
+            <p>
+                Many have experienced attacks, sexual violence, abduction and forced recruitment by armed groups, while others have been separated from their families and left vulnerable to exploitation and trafficking.
+            </p>
+
+            <p>
+                Nearly 11 million children need education support as schools have been destroyed, closed or turned into shelters, and healthcare systems in conflict areas have largely broken down, cutting off access to lifesaving care.
+            </p>
+
+            <p>
+                Despite the urgent need, the crisis remains severely underfunded and humanitarian aid is struggling to reach affected children and families.
+            </p>
+
+        </div>
+
+        <div class="quote-box">
+
+            <p>
+                “Before the war, Doha went to school and had dreams of becoming a teacher. Today, her education has been interrupted due to the escalating violence in Sudan which forced her and her family to flee.”
+            </p>
+
+            <span>17-year-old Doha, North Darfur</span>
+
+        </div>
+
+    </div>
 
 </section>
 
-<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+<section class="help-section">
+
+    <div class="container">
+
+        <h2>HOW WE'RE HELPING CHILDREN IN SUDAN</h2>
+
+        <div class="help-grid">
+
+            <div class="help-card">
+                <h3>Healthcare</h3>
+
+                <p>
+                    Operating mobile health clinics in communities hosting displaced families and supporting functioning health facilities to provide children with treatment for common and life-threatening illnesses, maternal and newborn care, and emergency responses to disease outbreaks such as cholera.
+                </p>
+            </div>
+
+            <div class="help-card">
+                <h3>Nutrition support</h3>
+
+                <p>
+                    Screening children for malnutrition, providing therapeutic care for severe acute malnutrition, and supporting mothers with optimal infant and young child feeding practices.
+                </p>
+            </div>
+
+            <div class="help-card">
+                <h3>Water, sanitation and hygiene</h3>
+
+                <p>
+                    Supporting families in displacement sites and conflict-affected communities to meet basic needs through food, access safe water and basic sanitation through water trucking, water storage facilities, and the distribution of hygiene kits.
+                </p>
+            </div>
+
+            <div class="help-card">
+                <h3>Education</h3>
+
+                <p>
+                    Supporting children to continue learning through schools and learning spaces, providing learning materials, setting up temporary education activities.
+                </p>
+            </div>
+
+            <div class="help-card">
+                <h3>Child protection</h3>
+
+                <p>
+                    Providing services to identify and support children at risk, offering psychosocial support, supporting family tracing and reunification, creating safe spaces.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="story-section">
+
+    <div class="container story-grid">
+
+        <div class="story-content">
+
+            <h2>Doha's Story</h2>
+
+            <p>
+                17-year old Doha sits with her siblings at the reception centre in Tawila, North Darfur upon arrival from Al Fasher after fleeing the violence.
+            </p>
+
+            <p>
+                Before the war, Doha went to school and had dreams of becoming a teacher.
+            </p>
+
+            <p>
+                Today, her education has been interrupted due to the escalating violence in Sudan which forced her and her family to flee.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
 {% endblock %}
+```
+
+
+
