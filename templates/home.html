@@ -6,6 +6,10 @@
 
     <h1>Lend a Hand</h1>
 
+    <div class="slider">
+        <img src="{{ url_for('static', filename='images/home-image1.png') }}" class="slide active">
+    </div>
+
     <h2>From awareness to action. From sympathy to change.</h2>
 
     <p>
@@ -28,11 +32,6 @@
     <a href="/donate" class="cta-button">Donate Now</a>
 
 </section>
-<div class="slider">
-    <img src="{{ url_for('static', filename='images/home-image1.png') }}" class="slide active">
-    <img src="{{ url_for('static', filename='images/home-image2.png') }}" class="slide">
-    <img src="{{ url_for('static', filename='images/home-image3.png') }}" class="slide">
-</div>
 
 <script src="{{ url_for('static', filename='js/home.js') }}"></script>
 
