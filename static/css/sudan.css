@@ -31,11 +31,11 @@ img{
     background:linear-gradient(135deg,#071a2b,#12344d);
 
     /* MOVED HIGHER */
-    padding:0 3% 0px;
+    margin-top: 20px;
 
     overflow:hidden;
 
-    min-height:100vh;
+    min-height:90vh;
 
     display:flex;
 
@@ -65,7 +65,7 @@ img{
     gap:20px;
 
     /* PUSH WHOLE HERO UP */
-    transform:translateY(-55px);
+    transform:translateY(-100px);
 }
 
 /* ================= TEXT SIDE ================= */
@@ -80,7 +80,7 @@ img{
     background:#ffb703;
     color:#111;
 
-    padding:6px 13px;
+    padding:2px 13px;
 
     border-radius:50px;
 
@@ -346,7 +346,7 @@ img{
 @media(max-width:600px){
 
     .hero-section{
-        padding:0px 4% 20px;
+        padding:15px 4% 20px;
     }
 
     .hero-text h1{
