@@ -31,7 +31,7 @@ img{
     background:linear-gradient(135deg,#071a2b,#12344d);
 
     /* MOVED HIGHER */
-    padding:0 3% 10px;
+    padding:0 3% 0px;
 
     overflow:hidden;
 
@@ -65,7 +65,7 @@ img{
     gap:20px;
 
     /* PUSH WHOLE HERO UP */
-    transform:translateY(-35px);
+    transform:translateY(-55px);
 }
 
 /* ================= TEXT SIDE ================= */
@@ -300,7 +300,7 @@ img{
     .hero-section{
         min-height:auto;
 
-        padding:30px 4%;
+        padding:5px 4% 20px;
     }
 
     .hero-container{
@@ -346,7 +346,7 @@ img{
 @media(max-width:600px){
 
     .hero-section{
-        padding:24px 4%;
+        padding:0px 4% 20px;
     }
 
     .hero-text h1{
