@@ -180,6 +180,14 @@ img{
     border-radius:18px;
 
     box-shadow:0 16px 30px rgba(0,0,0,0.35);
+    transition:transform 0.4s ease,
+               box-shadow 0.4s ease;
+}
+
+.hero-image img:hover{
+    transform:scale(1.06);
+
+    box-shadow:0 25px 50px rgba(0,0,0,0.45);
 }
 
 /* ================= CONTENT SECTIONS ================= */
