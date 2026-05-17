@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sudan.css') }}">
 
 <div class="donate-container">
 
@@ -45,7 +46,7 @@
         <label>CVV</label>
         <input type="text" placeholder="123" required>
 
-        <button type="submit" class="donate-btn">Donate Now</button>
+        <button type="submit" class="btn-primary">Donate Now</button>
 
     </form>
 
