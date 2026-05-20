@@ -434,10 +434,6 @@ def community():
 def education():
     return render_template("education.html")
 
-@app.route("/stories")
-def stories():
-    return render_template("stories.html")
-
 @app.route("/story")
 def story():
     return render_template("story.html")
