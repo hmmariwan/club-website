@@ -438,6 +438,10 @@ def education():
 def stories():
     return render_template("stories.html")
 
+@app.route("/story")
+def story():
+    return render_template("story.html")
+
 @app.route("/donate")
 def donate():
     return render_template("donate.html")

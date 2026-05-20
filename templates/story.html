@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/story.css') }}">
+
+<h1 class="new-story-title">Children Charity Stories</h1>
+
+<div class="new-story-container">
+
+    <!-- Story 1 -->
+    <div class="new-story-card">
+        <img src="{{ url_for('static', filename='images/s1.png') }}" alt="Children charity">
+
+        <div class="new-story-text">
+            <h2>Hope For Kids</h2>
+            <p>
+                Hope For Kids provides food, education, and medical support
+                to children in poor communities. The charity creates safe
+                learning spaces and helps families in difficult situations.
+                Thousands of children now have better opportunities and a
+                brighter future because of their support.
+            </p>
+        </div>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="new-story-card">
+        <img src="{{ url_for('static', filename='images/s2.png') }}" alt="Helping children">
+
+        <div class="new-story-text">
+            <h2>Bright Future</h2>
+            <p>
+                Bright Future focuses on helping children access quality
+                education and healthy meals every day. Volunteers work closely
+                with schools and local communities to provide supplies and
+                mentorship programs. Their work inspires children to dream big
+                and achieve their goals.
+            </p>
+        </div>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="new-story-card">
+        <img src="{{ url_for('static', filename='images/s3.png') }}" alt="Charity support">
+
+        <div class="new-story-text">
+            <h2>Care & Smile</h2>
+            <p>
+                Care & Smile supports orphaned and vulnerable children around
+                the world. The organisation provides shelter, emotional care,
+                and educational resources for young people in need. Their
+                mission is to give every child a safe environment and hope for
+                a successful future.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

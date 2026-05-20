@@ -1,0 +1,62 @@
+/* =========================
+   NEW STORY PAGE STYLES
+========================= */
+
+/* page title */
+.new-story-title {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 36px;
+    color: #2c3e50;
+    font-family: Arial, sans-serif;
+}
+
+/* layout container */
+.new-story-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+/* card */
+.new-story-card {
+    width: 320px;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease;
+}
+
+.new-story-card:hover {
+    transform: translateY(-6px);
+}
+
+/* image */
+.new-story-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+/* text area */
+.new-story-text {
+    padding: 18px;
+}
+
+/* heading */
+.new-story-text h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+/* paragraph */
+.new-story-text p {
+    line-height: 1.6;
+    color: #333;
+    font-family: Arial, sans-serif;
+}

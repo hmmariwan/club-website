@@ -1,0 +1,302 @@
+/* ================= RESET ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    overflow-x:hidden;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f7fa;
+    color:#222;
+}
+
+/* ================= TOP DONATE WRAPPER (OUTSIDE) ================= */
+
+.top-donate-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; 
+    padding: 8px 7% 0px 7%;    /* Tighter padding to maximize vertical space */
+    background: #f5f7fa;
+}
+
+/* ================= HERO SECTION ================= */
+
+.hero-section{
+    width:100%;
+    padding-top:0px;            
+    margin-top: 30px;          /* Forcefully shifts the entire hero section upward */
+    background:#f5f7fa;
+}
+
+.hero-wrapper{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+    /* Crops out the bottom section of the image containing the 5 icons inside the blue wave */
+    clip-path: inset(0 0 35% 0); 
+    margin-bottom: -15%;        /* Pulls the content below upward to eliminate empty space from clipping */
+}
+
+/* HERO IMAGE */
+
+.hero-image{
+    width:100%;
+    height:auto;
+    display:block;
+    object-fit:contain;
+}
+
+/* ================= DONATE BUTTON ================= */
+
+.btn-donate{
+    position:relative;
+    overflow:hidden;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:16px 38px;          
+    border-radius:14px;
+    text-decoration:none;
+    color:#fff;
+    font-size:1.15rem;
+    font-weight:800;
+    letter-spacing:0.5px;
+    background:
+        linear-gradient(
+            135deg,
+            #8b0015,
+            #d90429,
+            #ff1744,
+            #ff4d6d,
+            #d90429
+        );
+
+    background-size:300% 300%;
+
+    animation:
+        backgroundMove 4s linear infinite,
+        buttonGlow 2s ease-in-out infinite;
+
+    box-shadow:
+        0 10px 30px rgba(217,4,41,0.45),
+        0 0 20px rgba(255,50,80,0.35);
+
+    transition:0.3s ease;
+}
+
+/* ELECTRIC SHINE INSIDE BUTTON */
+
+.btn-donate::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(255,255,255,0.08) 20%,
+            rgba(255,255,255,0.55) 50%,
+            rgba(255,255,255,0.08) 80%,
+            transparent 100%
+        );
+    mix-blend-mode:screen;
+    animation:electricFlash 1.2s infinite;
+}
+
+/* EXTRA SHARP LIGHTNING LINE */
+
+.btn-donate::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:40%;
+    height:100%;
+    background:
+        linear-gradient(
+            120deg,
+            transparent,
+            rgba(255,255,255,0.95),
+            transparent
+        );
+    filter:blur(1px);
+    animation:lightningLine 1.8s infinite;
+}
+
+/* BUTTON HOVER */
+
+.btn-donate:hover{
+    transform:scale(1.06);
+    box-shadow:
+        0 16px 40px rgba(217,4,41,0.6),
+        0 0 35px rgba(255,255,255,0.35);
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes backgroundMove{
+    0%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+    100%{ background-position:0% 50%; }
+}
+
+@keyframes electricFlash{
+    0%{ opacity:0.2; }
+    50%{ opacity:1; }
+    100%{ opacity:0.2; }
+}
+
+@keyframes lightningLine{
+    0%{ left:-120%; opacity:0; }
+    20%{ opacity:1; }
+    60%{ left:130%; opacity:1; }
+    100%{ left:160%; opacity:0; }
+}
+
+@keyframes buttonGlow{
+    0%{
+        box-shadow:
+            0 10px 25px rgba(217,4,41,0.35),
+            0 0 10px rgba(255,255,255,0.05);
+    }
+    50%{
+        box-shadow:
+            0 18px 40px rgba(217,4,41,0.6),
+            0 0 30px rgba(255,255,255,0.35);
+    }
+    100%{
+        box-shadow:
+            0 10px 25px rgba(217,4,41,0.35),
+            0 0 10px rgba(255,255,255,0.05);
+    }
+}
+
+/* ================= HELPING SECTION ================= */
+
+.helping-section{
+    width:100%;
+    padding:0px 3%;           
+    background:#f5f7fa;
+}
+
+.container{
+    width:100%;
+    max-width:1600px;
+    margin:auto;
+}
+
+/* TITLE */
+
+.helping-section h2{
+    text-align:center;
+    margin-bottom:45px;
+    font-size:2.2rem;
+    color:#0b2540;
+}
+
+/* ================= GRID ================= */
+
+.help-box-grid{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:22px;
+}
+
+/* ================= BOXES ================= */
+
+.help-box{
+    background:#ffffff;
+    padding:30px 24px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.help-box:hover{
+    background:
+        linear-gradient(
+            135deg,
+            #ffb703,
+            #ffd166
+        );
+    transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(255,183,3,0.35);
+}
+
+.help-box h3{
+    margin-bottom:14px;
+    color:#0b2540;
+    font-size:1.15rem;
+}
+
+.help-box p{
+    color:#444;
+    font-size:0.95rem;
+}
+
+/* ================= RESPONSIVE MEDIA QUERIES ================= */
+
+@media(max-width:1200px){
+    .help-box-grid{
+        grid-template-columns:repeat(3, 1fr);
+    }
+}
+
+@media(max-width:900px){
+    .top-donate-container {
+        padding: 8px 6% 0px 6%;
+    }
+    .hero-section {
+        margin-top: -25px;      /* Slightly reduced offset for tablets */
+    }
+    .btn-donate{
+        padding:13px 30px;
+        font-size:1rem;
+    }
+    .help-box-grid{
+        grid-template-columns:repeat(2, 1fr);
+    }
+    .helping-section h2{
+        font-size:1.8rem;
+    }
+}
+
+@media(max-width:600px){
+    .top-donate-container {
+        justify-content: center; 
+        padding: 8px 5% 0px 5%;
+    }
+    
+    .hero-section {
+        margin-top: 40px;  /* <--- ADD/CHANGE THIS VALUE to push the image down on mobile */
+    }
+
+    .btn-donate{
+        padding:11px 24px;
+        font-size:0.95rem;
+        border-radius:12px;
+    }
+    .help-box-grid{
+        grid-template-columns:1fr;
+    }
+    .helping-section{
+        padding:30px 5%;
+    }
+    .helping-section h2{
+        font-size:1.45rem;
+        line-height:1.3;
+    }
+}
